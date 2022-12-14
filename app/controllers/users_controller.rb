@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   def index; end
 
   def show
-    @user = User.find(params[:id])
+    if session[:user_id]
+      @user = User.find(params[:id])
+    else
+      flash[:alert]= "You must be logged in"
+      redirect_to "/"
+    end 
   end
 
   def new
@@ -29,11 +34,17 @@ class UsersController < ApplicationController
   def login_user
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      redirect_to "/users/#{@user.id}"
+      session[:user_id] = @user.id
+      redirect_to "/dashboard"
     else
       flash[:alert] = "Credentials Invalid"
       redirect_to "/login"
     end
+  end
+
+  def logout_user
+    reset_session
+    redirect_to "/"
   end
 
   private
