@@ -11,7 +11,7 @@ class ViewingPartiesController < ApplicationController
     @movie = MovieFacade.movie_id(params[:movie_id])
     @party = user.viewing_parties.new(party_params)
     if @party.save
-      redirect_to user_path(user.id)
+      redirect_to "/dashboard"
 
     else
       flash[:alert] = "Error: #{error_message(@party.errors)}"

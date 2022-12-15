@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to "/dashboard"
     else
       flash[:alert] = "Error: #{error_message(@user.errors)}"
       redirect_to '/register'

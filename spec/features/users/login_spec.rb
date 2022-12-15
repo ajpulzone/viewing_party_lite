@@ -11,9 +11,9 @@ RSpec.describe 'Login Page' do
     it "the landing page should have a link for 'Log In' that when clicked will take the user to the login page" do
       visit root_path
 
-      within('#login') do
-        expect(page).to have_link('Login')
-        click_link('Login')
+      within('#dashboard') do
+        expect(page).to have_link('Log In')
+        click_link('Log In')
         expect(current_path).to eq(login_path)
       end
     end
@@ -33,8 +33,7 @@ RSpec.describe 'Login Page' do
         fill_in :email, with: "Fiona3@gmail.com"
         fill_in :password, with: "1234test"
         click_button "Login"
-
-        expect(current_path).to eq(user_path(@user3.id))
+        expect(current_path).to eq("/dashboard")
     end
   end 
 

@@ -40,8 +40,7 @@ describe "user creation" do
 end 
 
   describe "if the form is properly filled out" do
-    it "once the form is properly filled out, the user will be taken to their dashboard page ('/users/:id') where the id
-      is for the user that was just created" do
+    it "once the form is properly filled out, the user will be taken to their dashboard page" do
       visit '/register'
 
       fill_in :name,	with: 'Max'
@@ -50,9 +49,7 @@ end
       fill_in :password_confirmation, with: "test1234"
       click_button 'Register'
 
-      @user = User.last
-
-      expect(current_path).to eq(user_path(@user.id))
+      expect(current_path).to eq("/dashboard")
     end
   end 
 

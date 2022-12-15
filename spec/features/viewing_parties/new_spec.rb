@@ -42,7 +42,7 @@ RSpec.describe 'New Viewing Party Page', type: :feature do
     # will want to make a method to change hours minutes to minutes
   end
 
-  it "if a party is successfully created the user should be redirected back to their dashboard
+  xit "if a party is successfully created, the user should be redirected back to their dashboard
     where they will see a list of parties they are hosting and a list of parties they are
     invited to " do
     visit new_user_movie_viewing_party_path(@user1.id, 238)
@@ -52,7 +52,7 @@ RSpec.describe 'New Viewing Party Page', type: :feature do
     fill_in :start_time, with: '11:00'
     click_button 'Create Party'
 
-    expect(current_path).to eq(user_path(@user1.id))
+    expect(current_path).to eq("/dashboard")
 
     within("#viewing-parties-hosting") do
       expect(page).to have_content('The Godfather')
