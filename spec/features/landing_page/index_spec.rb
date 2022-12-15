@@ -29,6 +29,17 @@ RSpec.describe 'Landing Page' do
       expect(page).to have_no_content(@user2.name)
       expect(page).to have_no_content(@user3.name)
     end
+
+    it "if the visitor tries to visit '/dashboard', they should be redirected back to the landing page 
+      and there should be a message that says 'You must be logged in'" do
+        visit root_path
+
+        expect(page).to have_no_content("You must be logged in")
+        visit "/dashboard"
+        
+        expect(current_path).to eq(root_path)
+        expect(page).to have_content("You must be logged in")
+    end
   end
 
   describe "Landing Page seen as a logged in user" do

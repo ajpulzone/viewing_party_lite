@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @user = current_user
     else
       flash[:alert]= "You must be logged in"
-      redirect_to "/"
+      redirect_to root_path
     end 
   end
 
