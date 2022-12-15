@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/login", to: "users#login_form"
   post "/login", to: "users#login_user"
   get "/logout", to: "users#logout_user"
+  delete "/logout", to: "users#logout_user"
 
   resources :users do
     get '/discover', to: 'users#discover'
