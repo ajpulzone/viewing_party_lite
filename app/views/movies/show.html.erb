@@ -14,11 +14,11 @@
 <div id="total-review-count">
   <%= @reviews.total_review_count %> Reviews
 <div id='create-new-viewing-party'>
-  <%= button_to "Create Viewing Party for #{@movie.title}", new_user_movie_viewing_party_path(@user.id, @movie.id), method: :get %>
+  <%= button_to "Create Viewing Party for #{@movie.title}", "/dashboard/movies/#{@movie.id}/viewing_party/new", method: :get %>
 </div>
 
 <div id="discover-movies">
-  <%= button_to 'Discover Movies', "/users/#{@user.id}/discover", method: :get %>
+  <%= button_to 'Discover Movies', "/users/:id/discover", method: :get %>
 </div>
 
 <ul>

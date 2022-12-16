@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def discover
-    @user = User.find(params[:user_id])
+    if session[:user_id]
+      @user = current_user
+    else
+      flash[:alert]= "You must be logged in"
+      redirect_to root_path
+    end 
   end
 
   def create
